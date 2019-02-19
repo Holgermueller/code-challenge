@@ -3,18 +3,20 @@ const app = angular.module("Candidate.App", []);
 app.component("itmRoot", {
   controller: class {
     constructor() {
-      this.candidates = [{ name: "Puppies", votes: 10 }, { name: "Kittens", votes: 12 }, { name: "Gerbils", votes: 7 }];
+      this.candidates = [
+        { name: "Puppies", votes: 10, percentage: ""  },
+        { name: "Kittens", votes: 12, percentage: ""  },
+        { name: "Gerbils", votes: 7, percentage: "" }
+      ];
     }
 
     onVote(candidate) {
       console.log(`Vote for ${candidate.name}`);
       candidate.votes = candidate.votes + 1;
-
     }
 
     onAddCandidate(candidate) {
       console.log(`Added candidate ${candidate.name}`);
-      //this.candidates.push(this.newCandidate);
     }
 
     onRemoveCandidate(candidate) {
@@ -52,24 +54,19 @@ app.component("itmManagement", {
       this.newCandidate = {
         name: "",
         votes: 0,
-        percentage: 0
+        percentage: ""
       };
     }
 
     submitCandidate(candidate) {
       this.onAdd({ $candidate: candidate });
 
-      this.errorText = '';
-
-      if (this.candidates.indexOf(this.newCandidate) == -1) {
-        this.candidates.push(this.newCandidate);
-        this.newCandidate = {
-          name: "",
-          votes: 0
-        };
-      } else {
-        this.errorText = 'That candidate already exists!';
-      }
+      this.candidates.push(this.newCandidate);
+      this.newCandidate = {
+        name: "",
+        votes: 0,
+        percentage: ""
+      };
 
     }
 
@@ -97,8 +94,7 @@ app.component("itmManagement", {
                 <button type="button" ng-click="$ctrl.removeCandidate(candidate)">X</button>
             </li>
         </ul>
-        <p>{{errorText}}</p>
-
+        <p>{{this.errorText}}</p>
     `
 });
 
@@ -108,8 +104,6 @@ app.component("itmVote", {
     onVote: "&"
   },
   controller: class {
-
-
 
   },
   template: `
@@ -128,16 +122,15 @@ app.component("itmResults", {
     candidates: "<"
   },
   controller: class {
-
     calculatePercentageOfVotes(candidates) {
-      console.log(candidates);
+      let percentage = this.candidates.votes;
+      
     }
-
   },
   template: `
         <h2>Live Results</h2>
         <ul>
-            <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
+            <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes' ">
                 <span ng-bind="candidate.name"></span>
                 <strong ng-bind="candidate.votes"></strong>
                 <strong ng-bind="candidate.percentage"></strong>

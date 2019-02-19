@@ -10,7 +10,7 @@
     "license": "UNLICENCED",
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/twentyfirst/code-challenge"
+        "url": "https://github.com/Holgermueller/code-challenge.git"
     },
     "dependencies": {
         "express": "^4.16.3"

@@ -8,6 +8,8 @@ app.component("itmRoot", {
 
     onVote(candidate) {
       console.log(`Vote for ${candidate.name}`);
+      candidate.votes = candidate.votes + 1;
+
     }
 
     onAddCandidate(candidate) {
@@ -48,7 +50,8 @@ app.component("itmManagement", {
   controller: class {
     constructor() {
       this.newCandidate = {
-        name: ""
+        name: "",
+        votes: 0
       };
     }
 
@@ -102,6 +105,8 @@ app.component("itmVote", {
   },
   controller: class {
 
+
+
   },
   template: `
         <h2>Cast your vote!</h2>
@@ -119,6 +124,8 @@ app.component("itmResults", {
     candidates: "<"
   },
   controller: class {
+
+
 
   },
   template: `

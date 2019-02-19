@@ -51,18 +51,22 @@ app.component("itmManagement", {
     constructor() {
       this.newCandidate = {
         name: "",
-        votes: 0
+        votes: 0,
+        percentage: 0
       };
     }
 
     submitCandidate(candidate) {
       this.onAdd({ $candidate: candidate });
+
       this.errorText = '';
 
       if (this.candidates.indexOf(this.newCandidate) == -1) {
-        //console.log(this.newCandidate)
-        //this.candidates.push( { name: " ", votes: 0 } );
         this.candidates.push(this.newCandidate);
+        this.newCandidate = {
+          name: "",
+          votes: 0
+        };
       } else {
         this.errorText = 'That candidate already exists!';
       }
@@ -125,10 +129,8 @@ app.component("itmResults", {
   },
   controller: class {
 
-    sortFunction(candidate) {
-
-      return parseInt(candidate.votes);
-
+    calculatePercentageOfVotes(candidates) {
+      console.log(candidates);
     }
 
   },
@@ -138,7 +140,7 @@ app.component("itmResults", {
             <li ng-repeat="candidate in $ctrl.candidates | orderBy: '-votes'">
                 <span ng-bind="candidate.name"></span>
                 <strong ng-bind="candidate.votes"></strong>
-                <stron ng-bind="candidate.percentage"></strong>
+                <strong ng-bind="candidate.percentage"></strong>
             </li>
         </ul>
     `

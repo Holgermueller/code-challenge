@@ -4,9 +4,9 @@ app.component("itmRoot", {
   controller: class {
     constructor() {
       this.candidates = [
-        { name: "Puppies", votes: 10, percentage: ""  },
-        { name: "Kittens", votes: 12, percentage: ""  },
-        { name: "Gerbils", votes: 7, percentage: "" }
+        { name: "Puppies", votes: 10 },
+        { name: "Kittens", votes: 12 },
+        { name: "Gerbils", votes: 7 }
       ];
     }
 
@@ -53,21 +53,37 @@ app.component("itmManagement", {
     constructor() {
       this.newCandidate = {
         name: "",
-        votes: 0,
-        percentage: ""
+        votes: 0
       };
     }
 
     submitCandidate(candidate) {
       this.onAdd({ $candidate: candidate });
+      this.errorText = "";
 
-      this.candidates.push(this.newCandidate);
-      this.newCandidate = {
-        name: "",
-        votes: 0,
-        percentage: ""
-      };
+      let potentialCandidate = this.newCandidate.name;
+      let stringedCandidate = potentialCandidate.toString();
 
+      if (potentialCandidate === "") {
+        console.log("nope");
+        this.errorText = "Enter a name."
+      } else {
+        this.candidates.push(this.newCandidate);
+        this.newCandidate = {
+          name: "",
+          votes: 0
+        };
+      }
+
+      // if (this.candidates.indexOf(stringedCandidate) > -1) {
+      //   console.log('nope');
+      // } else {
+      //   this.candidates.push(this.newCandidate);
+      //   this.newCandidate = {
+      //     name: "",
+      //     votes: 0
+      //   }
+      // }
     }
 
     removeCandidate(candidate) {
@@ -84,8 +100,10 @@ app.component("itmManagement", {
             <label>Candidate Name</label>
             <input type="text" ng-model="$ctrl.newCandidate.name" required>
 
-            <button type="submit" ng-click="$ctrl.addCandidate(candidate)" >Add</button>
+            <button type="submit" ng-click="$ctrl.addCandidate(candidate)">Add</button>
         </form>
+
+        <p ng-bind="errorText">Error: {{errorText}}</p>
 
         <h3>Remove Candidate</h3>
         <ul>
@@ -94,7 +112,6 @@ app.component("itmManagement", {
                 <button type="button" ng-click="$ctrl.removeCandidate(candidate)">X</button>
             </li>
         </ul>
-        <p>{{this.errorText}}</p>
     `
 });
 
@@ -103,9 +120,7 @@ app.component("itmVote", {
     candidates: "<",
     onVote: "&"
   },
-  controller: class {
-
-  },
+  controller: class {},
   template: `
         <h2>Cast your vote!</h2>
 
@@ -124,7 +139,6 @@ app.component("itmResults", {
   controller: class {
     calculatePercentageOfVotes(candidates) {
       let percentage = this.candidates.votes;
-      
     }
   },
   template: `

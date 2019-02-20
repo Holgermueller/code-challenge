@@ -64,16 +64,11 @@ app.component("itmManagement", {
       let potentialCandidate = this.newCandidate.name;
       let stringedCandidate = potentialCandidate.toString();
 
-      if (potentialCandidate === "") {
-        console.log("nope");
-        this.errorText = "Enter a name."
-      } else {
-        this.candidates.push(this.newCandidate);
-        this.newCandidate = {
-          name: "",
-          votes: 0
-        };
-      }
+      potentialCandidate === ""
+        ? 
+        this.errorText = "YOU MUST ENTER A NAME."
+        : this.candidates.push(this.newCandidate);
+      this.newCandidate = { name: "", votes: 0 };
 
       // if (this.candidates.indexOf(stringedCandidate) > -1) {
       //   console.log('nope');
@@ -103,7 +98,7 @@ app.component("itmManagement", {
             <button type="submit" ng-click="$ctrl.addCandidate(candidate)">Add</button>
         </form>
 
-        <p ng-bind="errorText">Error: {{errorText}}</p>
+        <p ng-bind="$ctrl.errorText">Error: {{errorText}}</p>
 
         <h3>Remove Candidate</h3>
         <ul>

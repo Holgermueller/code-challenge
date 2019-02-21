@@ -61,24 +61,20 @@ app.component("itmManagement", {
       this.onAdd({ $candidate: candidate });
       this.errorText = "";
 
-      let potentialCandidate = this.newCandidate.name;
-      let stringedCandidate = potentialCandidate.toString();
+      let potentialCandidate = this.newCandidate.name.toString();
+      let candidatesAlreadyInList = this.candidates.map(
+        candidateNames => candidateNames.name
+      );
 
-      potentialCandidate === ""
-        ? 
-        this.errorText = "YOU MUST ENTER A NAME."
-        : this.candidates.push(this.newCandidate);
-      this.newCandidate = { name: "", votes: 0 };
+      if (potentialCandidate === "") {
+        (this.errorText = "YOU MUST ENTER A NAME.");
+      } else if (candidatesAlreadyInList.indexOf(potentialCandidate) > -1) {
+        (this.errorText = "Nope");
+      } else {
+        this.candidates.push(this.newCandidate);
+        this.newCandidate = { name: "", votes: 0 };
+      }
 
-      // if (this.candidates.indexOf(stringedCandidate) > -1) {
-      //   console.log('nope');
-      // } else {
-      //   this.candidates.push(this.newCandidate);
-      //   this.newCandidate = {
-      //     name: "",
-      //     votes: 0
-      //   }
-      // }
     }
 
     removeCandidate(candidate) {

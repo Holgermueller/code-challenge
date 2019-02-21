@@ -21,7 +21,7 @@ The app represents an online poll for candidates initially chosen from Puppies, 
 *   ~~Order the Live Results by the vote count descending.~~
 *   ~~When a vote is cast in the Cast Your Vote section, the Live Results should be updated.~~
 *   ~~Ensure that a new candidate cannot be added without entering a name~~
-*   Ensure that a new candidate with the same name cannot be added.
+*   ~~Ensure that a new candidate with the same name cannot be added.~~
 *   ~~Implement the Add New Candidate action~~
 *   Implement the Remove Candidate action
 

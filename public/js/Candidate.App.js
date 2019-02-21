@@ -13,6 +13,21 @@ app.component("itmRoot", {
     onVote(candidate) {
       console.log(`Vote for ${candidate.name}`);
       candidate.votes = candidate.votes + 1;
+
+      let singleCandidateVotes = candidate.votes;
+      let grabVotesFromArray = this.candidates.map(getVotes => getVotes.votes);
+
+      function add(accumulator, a) {
+        return accumulator + a;
+      };
+
+      let totaledVotes = grabVotesFromArray.reduce(add);
+
+      let calculatedPercentage = ((singleCandidateVotes / totaledVotes) * 100).toFixed();
+
+      candidate.percentage = calculatedPercentage + "%";
+
+      console.log(calculatedPercentage);
     }
 
     onAddCandidate(candidate) {
@@ -102,7 +117,7 @@ app.component("itmManagement", {
             <button type="submit" ng-click="$ctrl.addCandidate(candidate)">Add</button>
         </form>
 
-        <p ng-bind="$ctrl.errorText">Error: {{errorText}}</p>
+        <p ng-bind="$ctrl.errorText">Error:</p>
 
         <h3>Remove Candidate</h3>
         <ul>
@@ -135,11 +150,7 @@ app.component("itmResults", {
   bindings: {
     candidates: "<"
   },
-  controller: class {
-    calculatePercentageOfVotes(candidates) {
-      let percentage = this.candidates.votes;
-    }
-  },
+  controller: class {},
   template: `
         <h2>Live Results</h2>
         <ul>

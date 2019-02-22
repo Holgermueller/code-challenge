@@ -14,20 +14,20 @@ app.component("itmRoot", {
       console.log(`Vote for ${candidate.name}`);
       candidate.votes = candidate.votes + 1;
 
+      function addAllVotes(total, num) {
+        return total + num;
+      }
+
       let singleCandidateVotes = candidate.votes;
-      let grabVotesFromArray = this.candidates.map(getVotes => getVotes.votes);
-
-      function add(accumulator, a) {
-        return accumulator + a;
-      };
-
-      let totaledVotes = grabVotesFromArray.reduce(add);
-
-      let calculatedPercentage = ((singleCandidateVotes / totaledVotes) * 100).toFixed();
+      let totaledVotes = this.candidates
+        .map(getVotes => getVotes.votes)
+        .reduce(addAllVotes);
+      let calculatedPercentage = (
+        (singleCandidateVotes / totaledVotes) *
+        100
+      ).toFixed();
 
       candidate.percentage = calculatedPercentage + "%";
-
-      console.log(calculatedPercentage);
     }
 
     onAddCandidate(candidate) {
@@ -102,7 +102,9 @@ app.component("itmManagement", {
 
     removeCandidate(candidate) {
       this.onRemove({ $candidate: candidate });
-      this.candidates.splice(this.candidate, 1);
+
+      let index = this.candidates.indexOf(candidate);
+      this.candidates.splice(index, 1);
     }
   },
   template: `

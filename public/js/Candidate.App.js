@@ -18,19 +18,18 @@ app.component("itmRoot", {
         return total + num;
       }
 
+      let singleCandidateVotes = candidate.votes;
+
       let totaledVotes = this.candidates
         .map(getVotes => getVotes.votes)
         .reduce(addAllVotes);
 
-      this.candidates.forEach(
-        singleCandidate =>
-          (singleCandidate.percentage =
-            (singleCandidate.votes / totaledVotes[singleCandidate.votes]) * 100)
+      candidate.percentage = this.candidates.forEach(singleCandidate =>
+        (singleCandidate.percentage =
+          (singleCandidate.votes / totaledVotes) * 100).toFixed()
       );
 
-      let singleCandidateVotes = candidate.votes;
-
-      candidate.percentage = candidate.percentage =
+      candidate.percentage =
         ((singleCandidateVotes / totaledVotes) * 100).toFixed() + "%";
     }
 
@@ -88,7 +87,7 @@ app.component("itmManagement", {
         candidateNames => candidateNames.name
       );
 
-      this.newCandidate.name = potentialCandidate
+      this.newCandidate.name = potentialCandidate;
 
       switch (true) {
         case potentialCandidate === "":
@@ -109,7 +108,6 @@ app.component("itmManagement", {
 
     removeCandidate(candidate) {
       this.onRemove({ $candidate: candidate });
-
       let index = this.candidates.indexOf(candidate);
       this.candidates.splice(index, 1);
     }

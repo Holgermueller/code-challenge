@@ -18,19 +18,22 @@ app.component("itmRoot", {
         return total + num;
       }
 
-      let singleCandidateVotes = candidate.votes;
-
       let totaledVotes = this.candidates
         .map(getVotes => getVotes.votes)
         .reduce(addAllVotes);
 
-      candidate.percentage = this.candidates.forEach(singleCandidate =>
-        (singleCandidate.percentage =
-          (singleCandidate.votes / totaledVotes) * 100).toFixed()
+      this.candidates.forEach(
+        singleCandidate =>
+          (singleCandidate.percentage =
+            (singleCandidate.votes / totaledVotes) * 100)
       );
 
-      candidate.percentage =
-        ((singleCandidateVotes / totaledVotes) * 100).toFixed() + "%";
+      let singleCandidateVotes = candidate.votes;
+
+      candidate.percentage = (
+        (singleCandidateVotes / totaledVotes) *
+        100
+      ).toFixed();
     }
 
     onAddCandidate(candidate) {

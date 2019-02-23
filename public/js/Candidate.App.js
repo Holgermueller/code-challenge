@@ -18,16 +18,20 @@ app.component("itmRoot", {
         return total + num;
       }
 
-      let singleCandidateVotes = candidate.votes;
       let totaledVotes = this.candidates
         .map(getVotes => getVotes.votes)
         .reduce(addAllVotes);
-      let calculatedPercentage = (
-        (singleCandidateVotes / totaledVotes) *
-        100
-      ).toFixed();
 
-      candidate.percentage = calculatedPercentage + "%";
+      this.candidates.forEach(
+        singleCandidate =>
+          (singleCandidate.percentage =
+            (singleCandidate.votes / totaledVotes[singleCandidate.votes]) * 100)
+      );
+
+      let singleCandidateVotes = candidate.votes;
+
+      candidate.percentage = candidate.percentage =
+        ((singleCandidateVotes / totaledVotes) * 100).toFixed() + "%";
     }
 
     onAddCandidate(candidate) {
@@ -79,9 +83,12 @@ app.component("itmManagement", {
       let potentialCandidate =
         this.newCandidate.name.charAt(0).toUpperCase() +
         this.newCandidate.name.slice(1);
+
       let candidatesAlreadyInList = this.candidates.map(
         candidateNames => candidateNames.name
       );
+
+      this.newCandidate.name = potentialCandidate
 
       switch (true) {
         case potentialCandidate === "":

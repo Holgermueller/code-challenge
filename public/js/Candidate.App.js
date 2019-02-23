@@ -25,7 +25,7 @@ app.component("itmRoot", {
       this.candidates.forEach(
         singleCandidate =>
           (singleCandidate.percentage =
-            (singleCandidate.votes / totaledVotes) * 100)
+            (singleCandidate.votes / totaledVotes) * 100).toFixed()
       );
 
       let singleCandidateVotes = candidate.votes;

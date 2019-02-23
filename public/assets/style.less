@@ -1,26 +1,33 @@
+@header-color: #00bfff;
+@main-letter-color: #fffafa;
+
 body {
-  background-color: #fffafa;
+  background-color: @main-letter-color;
 }
-h1,
-h2 {
-  background-color: #00bfff;
+
+h1, h2 {
+  background-color: @header-color;
   text-align: center;
-  color: #fffafa;
+  color: @main-letter-color;
   padding: 2px;
   border-radius: 15px;
   border: 2px solid #0000ff;
   font-size: 3em;
 }
+
 li {
   list-style-type: none;
 }
+
 ul > li {
   margin: 6px;
 }
+
 button {
   font-size: 2em;
   margin: 2px;
 }
+
 li > .binding {
   background-color: green;
 }

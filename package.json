@@ -14,5 +14,12 @@
     },
     "dependencies": {
         "express": "^4.16.3"
+    },
+    "devDependencies": {
+        "grunt": "^1.0.3",
+        "grunt-browser-sync": "^2.2.0",
+        "grunt-contrib-cssmin": "^3.0.0",
+        "grunt-contrib-less": "^2.0.0",
+        "grunt-contrib-watch": "^1.1.0"
     }
 }

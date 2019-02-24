@@ -21,9 +21,54 @@ ul > li {
   margin: 6px;
 }
 button {
-  font-size: 2em;
   margin: 2px;
 }
+.vote-button {
+  border-radius: 15px;
+  border: 2px ridge #d3d3d3;
+  text-align: center;
+  background-image: linear-gradient(#a9a9a9, #dcdcdc);
+  color: #fffafa;
+}
+form {
+  text-align: center;
+}
+input[type='submit'] {
+  background-color: green;
+  color: #fffafa;
+}
+#dropdown-toggle-switch {
+  background-color: #DC143C;
+}
+#dropdown-container {
+  display: none;
+}
+.remove-candidate-item {
+  background-color: #DC143C;
+  color: #fffafa;
+  border-radius: 15px;
+  width: fit-content;
+  text-align: center;
+  padding: 2px;
+}
 .remove-button {
-  background-color: black;
+  background-color: #8B0000;
+  color: #fffafa;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+}
+button:hover,
+input[type='submit']:hover,
+#dropdown-toggle-switch:hover {
+  cursor: pointer;
+}
+@media only screen and (max-width: 360px) {
+  h1,
+  h2 {
+    font-size: 2em;
+  }
+  button {
+    font-size: 1.5em;
+  }
 }

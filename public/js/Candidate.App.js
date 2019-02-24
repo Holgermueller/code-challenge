@@ -119,17 +119,16 @@ app.component("itmManagement", {
         <h3>Add New Candidate</h3>
         <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" novalidate>
 
-            <label>Candidate Name</label>
-            <input type="text" ng-model="$ctrl.newCandidate.name" required>
+            <input type="text" ng-model="$ctrl.newCandidate.name" placeholder="Candidate Name" required>
 
             <button type="submit" ng-click="$ctrl.addCandidate(candidate)">Add</button>
         </form>
 
         <p ng-bind="$ctrl.errorText">Error:</p>
 
-        <h3>Remove Candidate</h3>
-        <ul>
-            <li ng-repeat="candidate in $ctrl.candidates">
+        <h3><button id="dropdown-toggle-switch">Remove Candidate</button></h3>
+        <ul id="dropdown-container">
+            <li ng-repeat="candidate in $ctrl.candidates" class="remove-candidate-item">
                 <span ng-bind="candidate.name"></span>
                 <button type="button" ng-click="$ctrl.removeCandidate(candidate)" class="remove-button">X</button>
             </li>
@@ -147,6 +146,7 @@ app.component("itmVote", {
         <h2>Cast your vote!</h2>
 
         <button type="button"
+        class="vote-button"
             ng-repeat="candidate in $ctrl.candidates"
             ng-click="$ctrl.onVote({ $candidate: candidate })">
             <span ng-bind="candidate.name"></span>

@@ -1,9 +1,13 @@
 $(document).ready(() => {
 
-  $(document).on('click', '#dropdown-toggle-switch', e => {
+  $(document).on('click', '#removeToggleSwitch', e => {
     e.preventDefault();
-    console.log('click')
-    $('#dropdown-container').toggle('show');
-  })
+    $('#removeContainer').toggle('show');
+  });
+
+  $(document).on('click', '#addToggleSwitch', e => {
+    e.preventDefault();
+    $('#addContainer').toggle('show');
+  });
 
 });

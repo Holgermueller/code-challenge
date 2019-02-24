@@ -82,7 +82,7 @@ app.component("itmManagement", {
 
       let potentialCandidate =
         this.newCandidate.name.charAt(0).toUpperCase() +
-        this.newCandidate.name.slice(1);
+        this.newCandidate.name.slice(1).toLowerCase();
 
       let candidatesAlreadyInList = this.candidates.map(
         candidateNames => candidateNames.name
@@ -116,18 +116,17 @@ app.component("itmManagement", {
   template: `
         <h2>Manage Candidates</h2>
 
-        <h3>Add New Candidate</h3>
-        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" novalidate>
+        <h3><button id="addToggleSwitch">Add New Candidate</button></h3>
+        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" id="addContainer" novalidate>
 
             <input type="text" ng-model="$ctrl.newCandidate.name" placeholder="Candidate Name" required>
 
             <button type="submit" ng-click="$ctrl.addCandidate(candidate)">Add</button>
+            <p ng-bind="$ctrl.errorText">Error:</p>
         </form>
 
-        <p ng-bind="$ctrl.errorText">Error:</p>
-
-        <h3><button id="dropdown-toggle-switch">Remove Candidate</button></h3>
-        <ul id="dropdown-container">
+        <h3><button id="removeToggleSwitch">Remove Candidate</button></h3>
+        <ul id="removeContainer">
             <li ng-repeat="candidate in $ctrl.candidates" class="remove-candidate-item">
                 <span ng-bind="candidate.name"></span>
                 <button type="button" ng-click="$ctrl.removeCandidate(candidate)" class="remove-button">X</button>

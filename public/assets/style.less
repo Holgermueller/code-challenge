@@ -43,16 +43,24 @@ form {
   text-align: center;
 }
 
-input[type='submit'] {
-  background-color: green;
+input[type='text'] {
+  padding: 3px;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+button[type='submit'],
+#addToggleSwitch {
+  background-color: mediumseagreen;
   color: @main-letter-color;
 }
 
-#dropdown-toggle-switch {
+#removeToggleSwitch {
   background-color: #DC143C;
 }
 
-#dropdown-container {
+#addContainer,
+#removeContainer {
   display: none;
 }
 
@@ -74,9 +82,14 @@ input[type='submit'] {
 }
 
 button:hover,
-input[type='submit']:hover,
-#dropdown-toggle-switch:hover {
+#removeToggleSwitch:hover,
+#addToggleSwitch {
   cursor: pointer;
+}
+
+p {
+  color: red;
+  text-align: center;
 }
 
 @media only screen and (max-width: 360px) {
@@ -85,9 +98,13 @@ input[type='submit']:hover,
     font-size: 2em;
   }
 
-
   button {
     font-size: 1.5em;
+  }
+
+  #addToggleSwitch ,
+  #removeToggleSwitch {
+    font-size: 1.25em;
   }
 
 }

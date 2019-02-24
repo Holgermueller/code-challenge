@@ -11,6 +11,9 @@ h2 {
   border: 2px solid #0000ff;
   font-size: 3em;
 }
+h3 {
+  text-align: center;
+}
 li {
   list-style-type: none;
 }
@@ -21,6 +24,6 @@ button {
   font-size: 2em;
   margin: 2px;
 }
-li > .binding {
-  background-color: green;
+.remove-button {
+  background-color: black;
 }

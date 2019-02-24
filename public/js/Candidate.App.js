@@ -25,15 +25,13 @@ app.component("itmRoot", {
       this.candidates.forEach(
         singleCandidate =>
           (singleCandidate.percentage =
-            (singleCandidate.votes / totaledVotes) * 100).toFixed()
+            Math.round((singleCandidate.votes / totaledVotes) * 100) + "%")
       );
 
       let singleCandidateVotes = candidate.votes;
 
-      candidate.percentage = (
-        (singleCandidateVotes / totaledVotes) *
-        100
-      ).toFixed();
+      candidate.percentage =
+        ((singleCandidateVotes / totaledVotes) * 100).toFixed() + "%";
     }
 
     onAddCandidate(candidate) {
@@ -133,7 +131,7 @@ app.component("itmManagement", {
         <ul>
             <li ng-repeat="candidate in $ctrl.candidates">
                 <span ng-bind="candidate.name"></span>
-                <button type="button" ng-click="$ctrl.removeCandidate(candidate)">X</button>
+                <button type="button" ng-click="$ctrl.removeCandidate(candidate)" class="remove-button">X</button>
             </li>
         </ul>
     `

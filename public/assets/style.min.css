@@ -1,1 +1,1 @@
-body{background-color:snow}h1,h2{background-color:#00bfff;text-align:center;color:snow;padding:2px;border-radius:15px;border:2px solid #00f;font-size:3em}li{list-style-type:none}ul>li{margin:6px}button{font-size:2em;margin:2px}li>.binding{background-color:green}
+body{background-color:snow}h1,h2{background-color:#00bfff;text-align:center;color:snow;padding:2px;border-radius:15px;border:2px solid #00f;font-size:3em}h3{text-align:center}li{list-style-type:none}ul>li{margin:6px}button{font-size:2em;margin:2px}.remove-button{background-color:#000}

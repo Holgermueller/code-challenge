@@ -131,7 +131,7 @@ app.component("itmManagement", {
         <h2>Manage Candidates</h2>
 
         <h3><button id="addToggleSwitch">Add New Candidate</button></h3>
-        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" id="addContainer" novalidate>
+        <form ng-submit="$ctrl.submitCandidate($ctrl.newCandidate)" novalidate>
 
             <input type="text" ng-model="$ctrl.newCandidate.name" placeholder="Candidate Name" required>
 

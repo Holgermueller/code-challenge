@@ -46,10 +46,6 @@ button[type='submit'],
 #removeToggleSwitch {
   background-color: #DC143C;
 }
-#addContainer,
-#removeContainer {
-  display: none;
-}
 .remove-candidate-item {
   background-color: #DC143C;
   color: #fffafa;

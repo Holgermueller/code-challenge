@@ -111,6 +111,20 @@ app.component("itmManagement", {
       this.onRemove({ $candidate: candidate });
       let index = this.candidates.indexOf(candidate);
       this.candidates.splice(index, 1);
+
+      function addAllVotes(total, num) {
+        return total + num;
+      }
+
+      let totaledVotes = this.candidates
+        .map(getVotes => getVotes.votes)
+        .reduce(addAllVotes);
+
+      this.candidates.forEach(
+        singleCandidate =>
+          (singleCandidate.percentage =
+            Math.round((singleCandidate.votes / totaledVotes) * 100) + "%")
+      );
     }
   },
   template: `

@@ -13,7 +13,7 @@
         "url": "https://github.com/Holgermueller/code-challenge.git"
     },
     "dependencies": {
-        "express": "^4.19.2"
+        "express": "^4.20.0"
     },
     "devDependencies": {
         "grunt": "^1.5.3",
